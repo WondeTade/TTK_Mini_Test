@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class TTK_Users_Test {
     
-    private static String userName;
-    private static String password ;
+    private static String userName = "Wonde";
+    private static String password = "123";
     private static TTK_Users users = new TTK_Users();
     private static ArrayList<TTK_Users> userList = new ArrayList<>();
     
@@ -14,20 +14,26 @@ public class TTK_Users_Test {
     public static final String ANSI_RESET  = "\u001B[0m";
   
     private static boolean test_addUserList(){
-        users.addUserList(userName, password);
+         users.addUserList(userName, password);
     return true;
     }
     private static boolean test_checkUserName(){
-         users.checkUserName(userName);
-    return true;
+         if(users.checkUserName(userName)){
+             return true;
+         }
+    return false;
     }
     private static boolean test_checkPassword(){
-        users.checkPassword(password);
-    return true;
+        if(users.checkPassword(password)){
+          return true;  
+        }
+    return false;
     }
     private static boolean test_allowLogin(){
-        users.allowLogin(userName, password);
-    return true;
+        if (users.allowLogin(userName, password)){
+          return true;  
+        }
+    return false;
     }
     private static boolean test_getUsersUserName(){
         users.getUsersUserName(0);
@@ -37,7 +43,8 @@ public class TTK_Users_Test {
     private static void printResultMethod(){
       int totalAmountOfErros = 0;
       String [] resultNameArray = {"addUserList Method", "checkUserName Method",
-                                   "checkPassword Method", "allowLogin Method"};
+                                   "checkPassword Method", "allowLogin Method",
+                                    "getUsersUserName method"};
       boolean [] resultArray = {test_addUserList(), test_checkUserName(),
                                 test_checkPassword(), test_allowLogin(),
                                 test_getUsersUserName()};
@@ -52,7 +59,7 @@ public class TTK_Users_Test {
       }
        System.out.println("Total amount of errors: "+totalAmountOfErros);
     }
-    public static void main(String[] a) {
+    public static void main(String[] args) {
         printResultMethod();
   }
 
